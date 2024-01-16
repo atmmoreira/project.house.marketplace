@@ -34,7 +34,8 @@ This is a project to improve my skills with Javascript, React, CSS and Firebase.
 # Javascript
 # Git / Github
 # React 18.2.0
-# FireBase
+# FireBase Store
+# Authentication with Google
 # React Router DOM
 ```
 
