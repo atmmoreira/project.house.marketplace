@@ -55,7 +55,6 @@ This is a project to improve my skills with Javascript, React, CSS and Firebase.
 # Download or clone the repository.
 # Open the project inside your favorite IDE (I use VSCode).
 # To install dependencies of this project, type in the terminal: npm install or npm i.
-# To run this project, type in the terminal: npm run start.
+# To run this project, type in the terminal: npm run dev.
 # In your favorite Browser, open this URL:  http://localhost:5173/ to see the Interface.
-# In your favorite Browser, open this URL:  http://localhost:5000/ to see the API.
 ```
