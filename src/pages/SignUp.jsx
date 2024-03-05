@@ -48,7 +48,7 @@ function SignUp() {
 
   return (
     <>
-      <div className="pageContaine r">
+      <div className="pageContainer">
         <header>
           <p className="pageHeader">Welcome Back!</p>
         </header>
