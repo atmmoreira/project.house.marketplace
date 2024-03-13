@@ -19,7 +19,7 @@
 <br >
 
 ## Description
-This is a project to improve my skills with Javascript, React, CSS and Firebase. Building a House Marketplace Project.
+This is a project to improve my skills with React 18.2.0, React Router DOM, Firebase, FireBase Store and Authentication. Building a House Marketplace Project.
 
 ## Screens Layout
 <div align="center">
