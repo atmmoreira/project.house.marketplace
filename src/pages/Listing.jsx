@@ -90,9 +90,9 @@ function Listing() {
         {/* Maps */}
 
         {listing &&
-          (auth.currentUser?.uid !== listing.userRef ? (
+          (auth.currentUser?.uid !== listing.useRef ? (
             <Link
-              to={`/contact/${listing.userRef}?listingName=${listing.name}`}
+              to={`/contact/${listing.useRef}?listingName=${listing.name}`}
               className="primaryButton"
             >
               Contact Lanlord

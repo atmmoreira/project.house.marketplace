@@ -24,6 +24,8 @@ function Contact() {
     getLandLord();
   }, [params.landlorId]);
 
+  const onChange = (e) => setMessage(e.target.value);
+
   return (
     <div className="pageContainer">
       <header>
@@ -35,6 +37,25 @@ function Contact() {
           <div className="contactLandlord">
             <p className="landlordName">{landlord?.name}</p>
           </div>
+
+          <form className="messageForm">
+            <div className="messageDiv">
+              <label htmlFor="message" className="messageLabel">
+                Message
+              </label>
+              <textarea
+                name="message"
+                id="message"
+                className="textarea"
+                value={message}
+                onChange={onChange}
+              ></textarea>
+            </div>
+
+            <a href={`mailto:${landlord.email}?Subject=${searchParams.get('listingName')}&body=${message}`}>
+              <button type="button" className="primaryButton">Send Message</button>
+            </a>
+          </form>
         </main>
       )}
     </div>
