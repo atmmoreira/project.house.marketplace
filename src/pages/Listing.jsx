@@ -1,25 +1,21 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.css";
 import { getDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { db } from "../firebase.config";
 import Spinner from "../components/Spinner";
 import shareIcon from "../assets/svg/shareIcon.svg";
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y])
+// Import CSS 
+import "leaflet/dist/leaflet.css";
+import "swiper/swiper-bundle.css";
 
 function Listing() {
   const [listing, setListing] = useState(null);
   const [loading, setLoading] = useState(true);
   const [shareLinkCopied, setShareLinkCopied] = useState(false);
-  const position = listing && [
-    listing.geolocation.lat,
-    listing.geolocation.lng,
-  ];
 
   const navigate = useNavigate();
   const params = useParams();
@@ -39,26 +35,35 @@ function Listing() {
   }, [navigate, params.listingId]);
 
   if (loading) {
-    <Spinner />;
+    return <Spinner />;
   }
+
+  console.log(listing.imgUrls);
 
   return (
     <main>
       {/* Sliders */}
-      <Swiper slidesPerView={1} pagination={{ clickable: true }} >
-        {listing &&
-          listing.imgUrls.map((url, index) => {
-            <SwiperSlide key={index}>
-              <div
-                style={{
-                  background: `url(${listing.imgUrls[index]}) center no-repeat`,
-                  backgroundSize: "cover",
-                }}
-                className="swiperSlideDiv"
-              ></div>
-            </SwiperSlide>
-          })}
+      <Swiper
+        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+        scrollbar={{ draggable: true }}
+        style={{ width: "100%", height: "100%" }}
+      >
+        {listing.imgUrls.map((url, index) => (
+          <SwiperSlide key={url}>
+            <div
+              style={{
+                background: `url(${listing.imgUrls[index]}) center no-repeat`,
+                backgroundSize: "cover",
+                minHeight: "30rem",
+              }}
+              className="swiperSlideDiv"
+            ></div>
+          </SwiperSlide>
+        ))}
       </Swiper>
+
       <div
         className="shareIconDiv"
         onClick={() => {
@@ -113,7 +118,7 @@ function Listing() {
         <div className="leafletContainer">
           <MapContainer
             style={{ height: "100%", width: "100%" }}
-            center={position}
+            center={[listing.geolocation.lat, listing.geolocation.lng]}
             zoom={13}
             scrollWheelZoom={false}
           >
@@ -121,7 +126,9 @@ function Listing() {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={position}>
+            <Marker
+              position={[listing.geolocation.lat, listing.geolocation.lng]}
+            >
               <Popup>{listing && listing.location}</Popup>
             </Marker>
           </MapContainer>
