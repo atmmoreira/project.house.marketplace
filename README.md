@@ -23,7 +23,7 @@ This is a project to improve my skills with React 18.2.0, React Router DOM, Fire
 
 ## Screens Layout
 <div align="center">
-  <img src="readme/layout/layout.jpg" alt="Login"/>
+  <img src="readme/layout/layout.png" alt="Login"/>
 </div>
 
 <br >
