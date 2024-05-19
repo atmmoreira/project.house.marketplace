@@ -10,7 +10,7 @@ import shareIcon from "../assets/svg/shareIcon.svg";
 // Swiper
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/swiper-bundle.css";
+import 'swiper/swiper-bundle.css'
 // Import CSS Leaflet
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
@@ -40,8 +40,6 @@ function Listing() {
   if (loading) {
     return <Spinner />;
   }
-
-  console.log(listing.imgUrls);
 
   return (
     <main>
