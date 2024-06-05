@@ -30,7 +30,7 @@ function Slider() {
           data: doc.data(),
         });
       });
-
+      
       setListings(listings);
       setLoading(false);
     };
